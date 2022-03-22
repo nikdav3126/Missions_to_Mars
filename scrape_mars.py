@@ -10,11 +10,11 @@ def scrape_all():
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless = False)
 
-    latest_title, latest_p = scrape_news(browser)
+    latestT, latestP = scrape_news(browser)
 
     mars_data = {
-        "latestTitle": latest_title,
-        "latestParagraph": latest_p,
+        "latestTitle": latestT,
+        "latestParagraph": latestP,
         "featuredImage": scrape_feature_img(browser),
         "facts":scrape_facts(browser),
         "hemispheres": scrape_hemispheres(browser),
@@ -35,11 +35,11 @@ def scrape_news(browser):
     news_soup = soup(html, "html.parser")
 
     latest = news_soup.select_one("div.list_text")
-    latest_title = latest.find("div", class_= "content_title").get_text()
+    latestT = latest.find("div", class_= "content_title").get_text()
 
-    latest_p = latest.find("div", class_= "article_teaser_body").get_text()
+    latestP = latest.find("div", class_= "article_teaser_body").get_text()
 
-    return latest_title, latest_p
+    return latestT, latestP
 
 def scrape_feature_img(browser):
     #go to website for space images

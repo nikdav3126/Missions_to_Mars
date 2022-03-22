@@ -19,8 +19,8 @@
                 <div class = "media">
                     <div class = "media-body">
                         <h2>Latest Mars Headline</h2>
-                        <h3 class = "media-heading"></h3>{{mars.latest_title}}
-                        <p >{{mars.latest_p}}</p>
+                        <h3 class = "media-heading"></h3>{{mars.latestTitle}}
+                        <p >{{mars.latestParagraph}}</p>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
             <div class = "media">
                 <div class = "media-body">
                     <h2>Featured Image</h2>
-                    <a href={{mars.featured_img_url}}><img src="{{mars.featured_img_url}}" alt=""></a><br>
+                    <a href={{mars.featuredImage}}><img src="{{mars.featuredImage}}" alt="..."></a><br>
                 </div>
             </div>
         </div>
@@ -57,9 +57,9 @@
         {% for hemisphere in hemisphere_image_urls %}
         <div class = "col-md-3">
             <div class = "thumbnail">
-                <img src="{{hemisphere.hemisphere_image_urls | default('static/images/error.png', true)}}" style = "width:100%" alt="...">
+                <img src="{{hemispheres.img_url | default('static/images/error.png', true)}}" style = "width:100%" alt="...">
                 <div>
-                    <h4>{{hemi_url["title"]}}</h4>
+                    <h4>{{hemispheres.title}}</h4>
                 </div>
             </div>
         </div>
