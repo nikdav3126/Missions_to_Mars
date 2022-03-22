@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class = "container">
+        <div class = "jumbotron text-center">
+            <h1>Mission to Mars</h1>
+            <p><a class = "btn btn-primary btn-lg" href="/scrape" role = "button">Scrape New Data</a></p>
+        </div>
+
+        <div class = "row" id = "mars-news">
+            <div class = "col-md-12">
+                <div class = "media">
+                    <div class = "media-body">
+                        <h2>Latest Mars Headline</h2>
+                        <h3 class = "media-heading"></h3>{{mars.latest_title}}
+                        <p >{{mars.latest_p}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class = "row" id = "mars-featured">
+        <div class = "col-md-8">
+            <div class = "media">
+                <div class = "media-body">
+                    <h2>Featured Image</h2>
+                    <a href={{mars.featured_img_url}}><img src="{{mars.featured_img_url}}" alt=""></a><br>
+                </div>
+            </div>
+        </div>
+
+        <div class = "col-md-4">
+            <div class = "media">
+                <div class = "media-body">
+                    <h2>Mars Facts</h2>
+                    {{mars.facts|safe}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class = "row" id = "mars-hemisphere-header">
+        <div class = "page-header">
+            <h2 class = "text-center">Mars Hemispheres</h2>
+        </div>
+    </div>
+
+    <div class = "row" id = "mars-thumbnails">
+        {% for hemisphere in hemisphere_image_urls %}
+        <div class = "col-md-3">
+            <div class = "thumbnail">
+                <img src="{{hemisphere.hemisphere_image_urls | default('static/images/error.png', true)}}" style = "width:100%" alt="...">
+                <div>
+                    <h4>{{hemi_url["title"]}}</h4>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>   
